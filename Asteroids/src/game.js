@@ -1,16 +1,31 @@
 // const MovObj = require("./moving_object.js");
 const Asteroid = require("./asteroid.js");
 
-class Game {
-
-    constructor() {
+    function Game () {
         this.canvas = document.getElementById('game-canvas');
         this.canvas.width = 1000;
         this.canvas.height = 600;
         this.ctx = this.canvas.getContext('2d');
     }
 
-    setUpGame() {
+    Game.DIM_X = 1000;
+    Game.DIM_Y = 600;
+    Game.NUM_ASTEROIDS = 10;
+
+    Game.prototype.addAsteroids = function() {
+        const numAsteroids = 0;
+        while (numAsteroids < Game.NUM_ASTEROIDS) {
+            const asteroid = new Asteroid({
+                pos: this.randomPosition()
+            });
+        }
+    };
+
+    Game.prototype.randomPosition = function() {
+        return [Math.floor(Math.random() * Game.DIM_X), Math.floor(Math.random() * Game.DIM_Y)];
+    };
+
+    Game.prototype.setUpGame = function () {
 
         const ctx = this.ctx;
 
@@ -26,10 +41,8 @@ class Game {
 
         drawBackground(ctx);
         asteroid.draw(ctx)
-        // mo.move()
 
-    }
+    };
 
-}
 
 module.exports = Game;
