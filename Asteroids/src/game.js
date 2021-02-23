@@ -1,4 +1,5 @@
-const MovObj = require("./moving_object.js");
+// const MovObj = require("./moving_object.js");
+const Asteroid = require("./asteroid.js");
 
 class Game {
 
@@ -19,15 +20,13 @@ class Game {
             ctx.fill();
         }
 
-        const mo = new MovObj({
-            pos: [100, 300],
-            vel: [40, 40],
-            radius: 30,
-            color: 'grey'
+        const asteroid = new Asteroid({
+            pos: [100, 300]
         });
 
         drawBackground(ctx);
-        mo.draw(ctx)
+        asteroid.draw(ctx)
+        // mo.move()
 
     }
 
